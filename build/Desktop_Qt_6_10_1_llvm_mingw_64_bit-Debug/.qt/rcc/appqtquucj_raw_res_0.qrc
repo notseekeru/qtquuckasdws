@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/qtquucj/">
-    <file alias="qrc.qrc">C:/Users/Seekeru/Documents/qt/qtquucj/qrc.qrc</file>
-    <file alias="assets/dinein.png">C:/Users/Seekeru/Documents/qt/qtquucj/assets/dinein.png</file>
-    <file alias="assets/applogo.ico">C:/Users/Seekeru/Documents/qt/qtquucj/assets/applogo.ico</file>
-  </qresource>
-</RCC>
-
