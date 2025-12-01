@@ -1,0 +1,31 @@
+{
+	"BUILD_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug/appqtquucj_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug/appqtquucj_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/Seekeru/Documents/qt/qtquucj/Main.qml",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/main.cpp",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/assets/applogo.ico",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/assets/takeout.png",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/assets/dinein.png",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/assets/applogo.png",
+		"C:/Users/Seekeru/Documents/qt/qtquucj/assets/placeholder.png"
+	],
+	"LOCK_FILE" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug/CMakeFiles/appqtquucj_autogen.dir/AutoRcc_qrc_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "qrc" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_qrc.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.10.1/llvm-mingw_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/Seekeru/Documents/qt/qtquucj/build/Desktop_Qt_6_10_1_llvm_mingw_64_bit-Debug/CMakeFiles/appqtquucj_autogen.dir/AutoRcc_qrc_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/Seekeru/Documents/qt/qtquucj/qrc.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}
