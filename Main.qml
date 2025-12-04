@@ -8,7 +8,7 @@ Window {
     width: 1080
     height: 1080
     visible: true
-    title: qsTr ("ERIN'S")
+    title: qsTr ("TRATTORIA BELLA VITA")
 
     // CODE
 
@@ -16,124 +16,26 @@ Window {
         anchors.centerIn: parent
         spacing: 60
 
-        Row {
-            spacing: 30
-            Rectangle {
+        Rectangle {
                 width: 250; height: 100
                 color: "#f1c40f"
-                radius: 12
-
+                radius: 20
                 Text {
                     anchors.centerIn: parent
-                    text: "DINE IN"
+                    text: "START ORDER"
                     color: "white"
                     font.bold: true
                     font.pixelSize: 48
                 }
-
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: backend.click_order("DINE IN")
+                    onClicked: {
+                        loader.push("qrc:/page1.qml")
+                        backend.click_order("START ORDER")
+                    }
+
                 }
             }
-            Rectangle {
-                width: 250; height: 100
-                color: "#68db0a"
-                radius: 12
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "TAKE OUT"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: backend.click_order("TAKE OUT")
-                }
-            }
-        }
-
-        Row {
-            spacing: 30
-            Rectangle {
-                width: 250; height: 100
-                color: "#f1c40f"
-                radius: 12
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "CASH"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: backend.click_payment("CASH")
-                }
-            }
-            Rectangle {
-                width: 250; height: 100
-                color: "#68db0a"
-                radius: 12
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "CASHLESS"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: backend.click_payment("CASHLESS")
-                }
-            }
-        }
-
-        Row {
-            spacing: 30
-            Rectangle {
-                width: 250; height: 100
-                color: "#f1c40f"
-                radius: 12
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "TABLE"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: backend.click_serving("TABLE")
-                }
-            }
-            Rectangle {
-                width: 250; height: 100
-                color: "#68db0a"
-                radius: 12
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "COUNTER"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: backend.click_serving("COUNTER")
-                }
-            }
-        }
     }
 }
