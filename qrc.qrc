@@ -8,7 +8,6 @@
         <file>assets/placeholder.png</file>
         <file>assets/takeout.png</file>
         <file>page2.qml</file>
-        <file>page3.qml</file>
         <file>page1.qml</file>
     </qresource>
 </RCC>

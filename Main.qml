@@ -7,35 +7,44 @@ Window {
     // MAIN WINDOW
     width: 1080
     height: 1080
+    color: "#413f36"
     visible: true
     title: qsTr ("TRATTORIA BELLA VITA")
-
+    
     // CODE
+    Rectangle {
+        width: 250
+        height: 1080
+        color: "#282e17"
+    }
 
     Column {
         anchors.centerIn: parent
         spacing: 60
 
         Rectangle {
-                width: 250; height: 100
-                color: "#f1c40f"
-                radius: 20
+                width: 250; height: 50
+                color: "#77261e"
+                radius: 200
                 Text {
                     anchors.centerIn: parent
                     text: "START ORDER"
                     color: "white"
-                    font.bold: true
-                    font.pixelSize: 48
+                    font.pixelSize: 32
                 }
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        loader.push("qrc:/page1.qml")
-                        backend.click_order("START ORDER")
+                        stack.push("qrc:/page1.qml");
+                        backend.click_order("START ORDER");
                     }
 
                 }
             }
+        }
 
+    StackView {
+    id: stack
+    anchors.fill: parent
     }
 }
