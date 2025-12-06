@@ -9,8 +9,8 @@ Window {
     height: 1080
     color: "#413f36"
     visible: true
-    title: qsTr ("TRATTORIA BELLA VITA")
-    
+    title: qsTr("TRATTORIA BELLA VITA")
+
     // CODE
     Rectangle {
         width: 250
@@ -19,32 +19,64 @@ Window {
     }
 
     Column {
-        anchors.centerIn: parent
-        spacing: 60
+        anchors {
+            verticalCenter: parent.verticalCenter
+            left: parent.left
+            leftMargin: 300
+        }
+        spacing: 200
 
-        Rectangle {
-                width: 250; height: 50
-                color: "#77261e"
-                radius: 200
-                Text {
-                    anchors.centerIn: parent
-                    text: "START ORDER"
-                    color: "white"
-                    font.pixelSize: 32
+        Column {
+            Text {
+                anchors {
+                    right: parent.right
+                    rightMargin: 350
                 }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        stack.push("qrc:/page1.qml");
-                        backend.click_order("START ORDER");
-                    }
 
-                }
+                text: "TRATTORIA"
+                color: "white"
+                font.pixelSize: 68
+                font.family: "Times New Roman"
+            }
+            Text {
+                text: "BELLA VITA"
+                color: "white"
+                font.pixelSize: 122
+                font.family: "Times New Roman"
+            }
+            Text {
+                text: "WE SERVE YOU."
+                color: "white"
+                font.pixelSize: 18
+                horizontalAlignment: Text.AlignLeft
+                font.family: "Times New Roman"
             }
         }
 
+        Rectangle {
+            width: 500
+            height: 100
+            color: "#77261e"
+            radius: 400
+            Text {
+                anchors.centerIn: parent
+                text: "START ORDER"
+                color: "white"
+                font.pixelSize: 56
+                font.family: "Times New Roman"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    stack.push("qrc:/page1.qml")
+                    backend.click_order("START ORDER")
+                }
+            }
+        }
+    }
+
     StackView {
-    id: stack
-    anchors.fill: parent
+        id: stack
+        anchors.fill: parent
     }
 }

@@ -9,5 +9,9 @@
         <file>assets/takeout.png</file>
         <file>page2.qml</file>
         <file>page1.qml</file>
+        <file>mainmenu.qml</file>
+        <file>finish.qml</file>
+        <file>assets/AutumnFlowers-9YVZK.otf</file>
+        <file>assets/Bickham Script Pro Regular.ttf</file>
     </qresource>
 </RCC>

@@ -11,15 +11,19 @@ Window {
     title: qsTr("PAYMENT METHOD")
 
     Rectangle {
-        width: 1080
         height: 100
         color: "#282e17"
         anchors {
-        bottom: parent.bottom
-        bottomMargin: 60
+            bottom: parent.bottom
+            bottomMargin: 60
+            left: parent.left
+            right: parent.right
         }
     }
+
     Column {
+        anchors.centerIn: parent
+        spacing: 30
 
         Text {
             text: "WHERE WOULD YOU LIKE TO"
@@ -34,33 +38,35 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        anchors.centerIn: parent
-        spacing: 30
         Rectangle {
-            width: 800; height: 100
+            width: 800
+            height: 100
             color: "#ffffffff"
 
             Column {
                 anchors.centerIn: parent
 
                 Text {
-                text: "Pay at the Counter"
-                color: "black"
-                font.bold: true
-                font.pixelSize: 48
-                anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Pay at the Counter"
+                    color: "black"
+                    font.bold: true
+                    font.pixelSize: 48
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
                 Text {
-                text: "(cash)"
-                color: "black"
-                font.pixelSize: 22
-                anchors.horizontalCenter: parent.horizontalCenter
+                    text: "(cash)"
+                    color: "black"
+                    font.pixelSize: 22
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: backend.click_payment("CASH")
+                onClicked: {
+                    backend.click_payment("CASH")
+                    stack.push("qrc:/finish.qml")
+                }
             }
         }
 
@@ -72,18 +78,19 @@ Window {
         }
 
         Rectangle {
-            width: 800; height: 100
+            width: 800
+            height: 100
             color: "#ffffffff"
 
             Column {
                 anchors.centerIn: parent
 
                 Text {
-                text: "Pay Here"
-                color: "black"
-                font.bold: true
-                font.pixelSize: 48
-                anchors.horizontalCenter: parent.horizontalCenter
+                    text: "Pay Here"
+                    color: "black"
+                    font.bold: true
+                    font.pixelSize: 48
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
                 Text {
                     text: "cashless"
@@ -92,12 +99,14 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
-            
+
             MouseArea {
                 anchors.fill: parent
-                onClicked: backend.click_payment("CASHLESS")
+                onClicked: {
+                    backend.click_payment("CASHLESS")
+                    stack.push("qrc:/finish.qml")
+                }
             }
         }
     }
 }
-
