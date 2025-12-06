@@ -23,61 +23,92 @@ Window {
 
     Column {
         anchors.centerIn: parent
-        spacing: 30
+        spacing: 50
 
-        Text {
-            color: "white"
-            font.pixelSize: 48
-            text: "WHERE WOULD YOU"
+        Column {
             anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "Times New Roman"
-        }
-        Text {
-            color: "white"
-            font.pixelSize: 48
-            text: "LIKE TO EAT?"
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "Times New Roman"
+            spacing: 10
+            Text {
+                color: "white"
+                font.pixelSize: 32
+                text: "WHERE WOULD YOU"
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "Times New Roman"
+            }
+            Text {
+                color: "white"
+                font.pixelSize: 32
+                text: "LIKE TO EAT?"
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "Times New Roman"
+            }
         }
 
         Row {
-            spacing: 50
-            Rectangle {
-                width: 400
+            spacing: 80
+            Column {
+                spacing: 20
+                Rectangle {
+                    width: 300
+                    height: 300
+                    color: "transparent"
+                    Image {
+                        anchors.fill: parent
+                        source: "qrc:/assets/dinein.png"
+                        fillMode: Image.PreserveAspectCrop
+                    }
+                }
+                Rectangle {
+                width: 300
                 height: 100
                 color: "#815017"
-                Text {
-                    anchors.centerIn: parent
-                    text: "Dine-in"
-                    color: "white"
-                    font.pixelSize: 32
-                    font.family: "Times New Roman"
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        backend.click_order("DINE IN")
-                        stack.push("qrc:/mainmenu.qml")
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Dine-in"
+                        color: "white"
+                        font.pixelSize: 32
+                        font.family: "Times New Roman"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            backend.click_order("DINE IN")
+                            stack.push("qrc:/mainmenu.qml")
+                        }
                     }
                 }
             }
+            
+            Column {
+                spacing: 20
+                Rectangle {
+                    width: 300
+                    height: 300
+                    color: "transparent"
+                    Image {
+                        anchors.fill: parent
+                        source: "qrc:/assets/takeout.png"
+                        fillMode: Image.PreserveAspectCrop
+                    }
+                }
 
-            Rectangle {
-                width: 400
+                Rectangle {
+                width: 300
                 height: 100
                 color: "#815017"
-                Text {
-                    anchors.centerIn: parent
-                    text: "Take-out"
-                    color: "white"
-                    font.pixelSize: 32
-                    font.family: "Times New Roman"
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        backend.click_order("TAKE OUT")
-                        stack.push("qrc:/mainmenu.qml")
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Take-out"
+                        color: "white"
+                        font.pixelSize: 32
+                        font.family: "Times New Roman"
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            backend.click_order("TAKE OUT")
+                            stack.push("qrc:/mainmenu.qml")
+                        }
                     }
                 }
             }
