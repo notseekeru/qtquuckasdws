@@ -1,4 +1,8 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 2.15
+import QtQuick.Window 2.15
+import QtQuick.Particles 2.15
 
 Window {
     width: 1080
@@ -27,12 +31,14 @@ Window {
             color: "white"
             font.pixelSize: 48
             anchors.horizontalCenter: parent.horizontalCenter
+            font.family: "Times New Roman"
         }
         Text {
             text: "PAY?"
             color: "white"
             font.pixelSize: 48
             anchors.horizontalCenter: parent.horizontalCenter
+            font.family: "Times New Roman"
         }
 
         Rectangle {
@@ -49,12 +55,14 @@ Window {
                     font.bold: true
                     font.pixelSize: 48
                     anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: "Times New Roman"
                 }
                 Text {
                     text: "(cash)"
                     color: "black"
                     font.pixelSize: 22
                     anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: "Times New Roman"
                 }
             }
 
@@ -72,6 +80,7 @@ Window {
             color: "white"
             font.pixelSize: 48
             anchors.horizontalCenter: parent.horizontalCenter
+            font.family: "Times New Roman"
         }
 
         Rectangle {
@@ -88,12 +97,14 @@ Window {
                     font.bold: true
                     font.pixelSize: 48
                     anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: "Times New Roman"
                 }
                 Text {
                     text: "cashless"
                     color: "black"
                     font.pixelSize: 22
                     anchors.horizontalCenter: parent.horizontalCenter
+                    font.family: "Times New Roman"
                 }
             }
 

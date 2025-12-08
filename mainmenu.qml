@@ -1,4 +1,8 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 2.15
+import QtQuick.Window 2.15
+import QtQuick.Particles 2.15
 
 Window {
     width: 1080
@@ -9,6 +13,7 @@ Window {
 
     Column {
         anchors.fill: parent
+
         Repeater {
             model: [
                 { text: "MAIN MENU", file: "qrc:/mainmenu.qml" },
@@ -40,10 +45,10 @@ Window {
 
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: true
                     onClicked: {
                         stack.push(modelData.file)
                     }
+                    hoverEnabled: true
                     onEntered: parent.scale = 1.05
                     onExited: parent.scale = 1.0
                 }
@@ -55,6 +60,11 @@ Window {
             color: "#a2641b"
             border.width: 1
             border.color: "#000000"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: stack.push("qrc:/addorder.qml")
+            }
         }
     }
 
@@ -66,6 +76,76 @@ Window {
             bottomMargin: 60
             left: parent.left
             right: parent.right
+        }
+    }
+
+    Row {
+        spacing: 20
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 80
+            left: parent.left
+            leftMargin: 40
+        }
+        Rectangle {
+            width: 100
+            height: 100
+            color: "transparent"
+            Text {
+                anchors.centerIn: parent
+                text: "Total PHP: "
+                color: "white"
+                font.pixelSize: 32
+                font.family: "Times New Roman"
+            }
+        }
+        
+    }
+
+    Row {
+        spacing: 20
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 30
+            left: parent.left
+            leftMargin: 20
+        }
+
+        Rectangle {
+            width: 150
+            height: 50
+            color: "#000000"
+            Text {
+                anchors.centerIn: parent
+                text: "Cancel Order"
+                color: "white"
+                font.pixelSize: 18
+                font.family: "Times New Roman"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    stack.pop()
+                }
+            }   
+        }
+        Rectangle {
+            width: 200
+            height: 50
+            color: "#ffffff"
+            Text {
+                anchors.centerIn: parent
+                text: "Proceed to Checkout"
+                color: "black"
+                font.pixelSize: 18
+                font.family: "Times New Roman"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    stack.push("qrc:/checkout.qml")
+                }
+            }   
         }
     }
 }

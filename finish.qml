@@ -1,4 +1,8 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 2.15
+import QtQuick.Window 2.15
+import QtQuick.Particles 2.15
 
 Window {
     width: 1080
@@ -12,12 +16,14 @@ Window {
         text:"PREPARING YOUR ORDER."
         color: "white"
         font.pixelSize: 48
+        font.family: "Times New Roman"
         anchors.horizontalCenter: parent.horizontalCenter
         }
         Text {
         text: "PLEASE HAVE A SEAT."
         color: "white"
         font.pixelSize: 48
+        font.family: "Times New Roman"
         anchors.horizontalCenter: parent.horizontalCenter
         }
     }
