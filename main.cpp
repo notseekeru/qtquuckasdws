@@ -4,6 +4,13 @@
 #include <QQmlContext>
 #include <QObject>
 
+struct Product {
+    int id;
+    QString name;
+    double price;
+    QString image;
+};
+
 class Backend : public QObject {
     Q_OBJECT
 
