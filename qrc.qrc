@@ -15,5 +15,42 @@
         <file>assets/Bickham Script Pro Regular.ttf</file>
         <file>addorder.qml</file>
         <file>checkout.qml</file>
+        <file>assets/foods/Alla Carbonara.png</file>
+        <file>assets/foods/Bacardi Black.png</file>
+        <file>assets/foods/Banana.png</file>
+        <file>assets/foods/Bombay Sapphire.png</file>
+        <file>assets/foods/Bruschetta.png</file>
+        <file>assets/foods/Butterfly pea and lemon tea.png</file>
+        <file>assets/foods/Carpaccio di Manzo.png</file>
+        <file>assets/foods/Classic Mocha Parfait.png</file>
+        <file>assets/foods/Costolette di Maiale.png</file>
+        <file>assets/foods/Crema di Porcini e Trtufo Nero.png</file>
+        <file>assets/foods/Crema di Zucca.png</file>
+        <file>assets/foods/FETTUCINE.png</file>
+        <file>assets/foods/Fresh Cucumber Lemon and Moringa.png</file>
+        <file>assets/foods/Fresh Lemonade Soda.png</file>
+        <file>assets/foods/Frutti di Mare Nero.png</file>
+        <file>assets/foods/Glen Fiddich 12yo.png</file>
+        <file>assets/foods/Grey Goose.png</file>
+        <file>assets/foods/Hennessy VS.png</file>
+        <file>assets/foods/Italian Nachos.png</file>
+        <file>assets/foods/Jameson.png</file>
+        <file>assets/foods/Jose Cuervo Especial.png</file>
+        <file>assets/foods/Lasagna.png</file>
+        <file>assets/foods/Mango.png</file>
+        <file>assets/foods/Margherita.png</file>
+        <file>assets/foods/Mediterranea.png</file>
+        <file>assets/foods/Nutty Nutella.png</file>
+        <file>assets/foods/Osso Buco Mechado.png</file>
+        <file>assets/foods/Panna.png</file>
+        <file>assets/foods/PENNE.png</file>
+        <file>assets/foods/Pizza Bianca.png</file>
+        <file>assets/foods/Quattro Formaggi.png</file>
+        <file>assets/foods/Remy Martin VSOP.png</file>
+        <file>assets/foods/San Pellegrino.png</file>
+        <file>assets/foods/Schweppes Soda Water.png</file>
+        <file>assets/foods/Schweppes Tonic Water.png</file>
+        <file>assets/foods/SPAGHETTI.png</file>
+        <file>assets/foods/Vanilla Caramel.png</file>
     </qresource>
 </RCC>

@@ -72,7 +72,7 @@ Window {
         Repeater {
             model: [
                 { text: "MAIN MENU", file: "qrc:/mainmenu.qml", image: "qrc:/assets/foods/Mainmenu.png" },
-                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", image: "qrc:/assets/foods/Carpaccio di manzo.png" },
+                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", image: "qrc:/assets/foods/assets/foods/Carpaccio di Manzo.png" },
                 { text: "ZUPP", file: "qrc:/pages/zupp.qml", image: "qrc:/assets/foods/Crema di zucca.png" },
                 { text: "PIZZE", file: "qrc:/pages/pizze.qml", image: "qrc:/assets/foods/Margherita.png" },
                 { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml", image: "qrc:/assets/foods/Fettucine.png" },
