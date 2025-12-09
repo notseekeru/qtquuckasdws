@@ -71,16 +71,16 @@ Window {
     Column {
         Repeater {
             model: [
-                { text: "MAIN MENU", file: "qrc:/mainmenu.qml", },
-                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", },
-                { text: "ZUPP", file: "qrc:/pages/zupp.qml", },
-                { text: "PIZZE", file: "qrc:/pages/pizze.qml", },
-                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml", },
-                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml", },
-                { text: "TEA", file: "qrc:/pages/tea.qml" },
-                { text: "PARFAIT", file: "qrc:/pages/parfait.qml", },
-                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml", },
-                { text: "WATER", file: "qrc:/pages/water.qml", },
+                { text: "MAIN MENU", file: "qrc:/mainmenu.qml", image: "qrc:/assets/foods/Mainmenu.png" },
+                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", image: "qrc:/assets/foods/Carpaccio_di_manzo.png" },
+                { text: "ZUPP", file: "qrc:/pages/zupp.qml", image: "qrc:/assets/foods/Crema_di_zucca.png" },
+                { text: "PIZZE", file: "qrc:/pages/pizze.qml", image: "qrc:/assets/foods/Margherita.png" },
+                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml", image: "qrc:/assets/foods/Fettucine.png" },
+                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml", image: "qrc:/assets/foods/Costolette_di_maiale.png" },
+                { text: "TEA", file: "qrc:/pages/tea.qml", image: "qrc:/assets/foods/Butterfly_pea_lemon_tea.png" },
+                { text: "PARFAIT", file: "qrc:/pages/parfait.qml", image: "qrc:/assets/foods/Classic_mocha_parfait.png" },
+                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml", image: "qrc:/assets/foods/Mango.png" },
+                { text: "WATER", file: "qrc:/pages/water.qml", image: "qrc:/assets/foods/San Pellegrino.png" },
             ]
             delegate: Rectangle {
                 width: 50
