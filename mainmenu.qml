@@ -68,42 +68,6 @@ Window {
         }
     }
 
-    Column {
-        Repeater {
-            model: [
-                { text: "MAIN MENU", file: "qrc:/mainmenu.qml", image: "qrc:/assets/foods/Mainmenu.png" },
-                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", image: "qrc:/assets/foods/Carpaccio di Manzo.png" },
-                { text: "ZUPP", file: "qrc:/pages/zupp.qml", image: "qrc:/assets/foods/Crema di Zucca.png" },
-                { text: "PIZZE", file: "qrc:/pages/pizze.qml", image: "qrc:/assets/foods/Margherita.png" },
-                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml", image: "qrc:/assets/foods/FETTUCINE.png" },
-                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml", image: "qrc:/assets/foods/Costolette di Maiale.png" },
-                { text: "TEA", file: "qrc:/pages/tea.qml", image: "qrc:/assets/foods/Butterfly pea and lemon tea.png" },
-                { text: "PARFAIT", file: "qrc:/pages/parfait.qml", image: "qrc:/assets/foods/Classic Mocha Parfait.png" },
-                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml", image: "qrc:/assets/foods/Mango.png" },
-                { text: "WATER", file: "qrc:/pages/water.qml", image: "qrc:/assets/foods/San Pellegrino.png" },
-            ]
-            delegate: Rectangle {
-                width: 50
-                height: 50
-                color: "transparent"
-
-                Image {
-                    anchors.fill: parent
-                    source: modelData.image
-                    fillMode: Image.PreserveAspectFit
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        stack.push(modelData.file)
-                    }
-                }
-            }
-        }
-    }
-
-
     Rectangle {
         height: 100
         color: "#282e17"
