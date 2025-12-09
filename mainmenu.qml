@@ -17,15 +17,15 @@ Window {
         Repeater {
             model: [
                 { text: "MAIN MENU", file: "qrc:/mainmenu.qml" },
-                { text: "ANTI PASTI", file: "qrc:/antipasti.qml" },
-                { text: "ZUPP", file: "qrc:/zupp.qml" },
-                { text: "PIZZE", file: "qrc:/pizze.qml" },
-                { text: "PASTA SPECIALE", file: "qrc:/pasta_speciale.qml" },
-                { text: "MEAT COURSE", file: "qrc:/meat_course.qml" },
-                { text: "TEA", file: "qrc:/tea.qml" },
-                { text: "PARFAIT", file: "qrc:/parfait.qml" },
-                { text: "FRUIT SHAKES", file: "qrc:/fruit_shakes.qml" },
-                { text: "WATER", file: "qrc:/water.qml" },
+                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml" },
+                { text: "ZUPP", file: "qrc:/pages/zupp.qml" },
+                { text: "PIZZE", file: "qrc:/pages/pizze.qml" },
+                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml" },
+                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml" },
+                { text: "TEA", file: "qrc:/pages/tea.qml" },
+                { text: "PARFAIT", file: "qrc:/pages/parfait.qml" },
+                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml" },
+                { text: "WATER", file: "qrc:/pages/water.qml" },
             ]
 
             delegate: Rectangle {
