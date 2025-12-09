@@ -71,21 +71,34 @@ Window {
     Column {
         Repeater {
             model: [
-                { text: "MAIN MENU", file: "qrc:/mainmenu.qml" },
-                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml" },
-                { text: "ZUPP", file: "qrc:/pages/zupp.qml" },
-                { text: "PIZZE", file: "qrc:/pages/pizze.qml" },
-                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml" },
-                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml" },
+                { text: "MAIN MENU", file: "qrc:/mainmenu.qml", },
+                { text: "ANTI PASTI", file: "qrc:/pages/antipasti.qml", },
+                { text: "ZUPP", file: "qrc:/pages/zupp.qml", },
+                { text: "PIZZE", file: "qrc:/pages/pizze.qml", },
+                { text: "PASTA SPECIALE", file: "qrc:/pages/pasta_speciale.qml", },
+                { text: "MEAT COURSE", file: "qrc:/pages/meat_course.qml", },
                 { text: "TEA", file: "qrc:/pages/tea.qml" },
-                { text: "PARFAIT", file: "qrc:/pages/parfait.qml" },
-                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml" },
-                { text: "WATER", file: "qrc:/pages/water.qml" },
+                { text: "PARFAIT", file: "qrc:/pages/parfait.qml", },
+                { text: "FRUIT SHAKES", file: "qrc:/pages/fruit_shakes.qml", },
+                { text: "WATER", file: "qrc:/pages/water.qml", },
             ]
             delegate: Rectangle {
-                width 50
-                height 50
-                
+                width: 50
+                height: 50
+                color: "transparent"
+
+                Image {
+                    anchors.fill: parent
+                    source: modelData.image
+                    fillMode: Image.PreserveAspectFit
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        stack.push(modelData.file)
+                    }
+                }
             }
         }
     }
