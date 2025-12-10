@@ -125,6 +125,7 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    orderManager.clearOrder()
                     stack.pop()
                 }
             }   

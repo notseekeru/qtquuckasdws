@@ -13,8 +13,16 @@
         <file>finish.qml</file>
         <file>assets/AutumnFlowers-9YVZK.otf</file>
         <file>assets/Bickham Script Pro Regular.ttf</file>
-        <file>addorder.qml</file>
         <file>checkout.qml</file>
+        <file>pages/antipasti.qml</file>
+        <file>pages/zupp.qml</file>
+        <file>pages/pizze.qml</file>
+        <file>pages/pasta_speciale.qml</file>
+        <file>pages/meat_course.qml</file>
+        <file>pages/tea.qml</file>
+        <file>pages/parfait.qml</file>
+        <file>pages/fruit_shakes.qml</file>
+        <file>pages/water.qml</file>
         <file>assets/foods/Alla Carbonara.png</file>
         <file>assets/foods/Bacardi Black.png</file>
         <file>assets/foods/Banana.png</file>

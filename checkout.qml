@@ -11,6 +11,19 @@ Window {
     visible: true
     title: qsTr("FINISH")
 
+    property real orderTotal: 0
+
+    Connections {
+        target: orderManager
+        function onOrderChanged() {
+            orderTotal = orderManager.getOrderTotal()
+        }
+    }
+
+    Component.onCompleted: {
+        orderTotal = orderManager.getOrderTotal()
+    }
+
     Text {
         anchors {
             top: parent.top
@@ -27,6 +40,93 @@ Window {
     Column {
         spacing: 20
         anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    ListView {
+        id: orderListView
+        width: 800
+        height: 500
+        clip: true
+        spacing: 10
+        anchors {
+            top: parent.top
+            topMargin: 140
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        model: orderManager.getOrderItems()
+
+        delegate: Rectangle {
+            width: 800
+            height: 80
+            color: "transparent"
+
+            Row {
+                anchors.fill: parent
+                anchors.margins: 10
+                spacing: 20
+
+                Text {
+                    width: 400
+                    text: modelData.name
+                    color: "white"
+                    font.pixelSize: 20
+                    font.family: "Times New Roman"
+                    verticalAlignment: Text.AlignVCenter
+                }
+
+                Text {
+                    width: 100
+                    text: "x " + modelData.quantity
+                    color: "white"
+                    font.pixelSize: 20
+                    font.family: "Times New Roman"
+                    verticalAlignment: Text.AlignVCenter
+                }
+
+                Text {
+                    width: 200
+                    text: "₱" + modelData.lineTotal.toFixed(2)
+                    color: "white"
+                    font.pixelSize: 20
+                    font.family: "Times New Roman"
+                    verticalAlignment: Text.AlignVCenter
+                }
+            }
+        }
+    }
+
+    Column {
+        width: 800
+        spacing: 10
+        anchors {
+            top: orderListView.bottom
+            topMargin: 10
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+            width: 800
+            height: 2
+            color: "white"
+        }
+        // putanginang total gago
+        Rectangle {
+            width: 800
+            height: 60
+            color: "transparent"
+
+            Text {
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+                anchors.verticalCenter: parent.verticalCenter
+                text: "TOTAL: ₱" + orderTotal.toFixed(2)
+                color: "white"
+                font.pixelSize: 28
+                font.bold: true
+                font.family: "Times New Roman"
+            }
+        }
     }
 
     Rectangle {
@@ -107,6 +207,7 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    orderManager.clearOrder()
                     stack.pop()
                 }
             }

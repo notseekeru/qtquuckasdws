@@ -11,6 +11,19 @@ Window {
     visible: true
     title: qsTr("TEA")
 
+    property real orderTotal: 0
+
+    Connections {
+        target: orderManager
+        function onOrderChanged() {
+            orderTotal = orderManager.getOrderTotal()
+        }
+    }
+
+    Component.onCompleted: {
+        orderTotal = orderManager.getOrderTotal()
+    }
+
     Column {
         anchors.fill: parent
 
@@ -68,6 +81,82 @@ Window {
         }
     }
 
+    Column {
+        width: 500
+        height: parent.height
+        spacing: 10
+        anchors.top: parent.top
+        anchors.topMargin: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 350
+
+        Repeater {
+            model: orderManager.getMenuItemsByCategory("tea")
+
+            delegate: Rectangle {
+                width: 700
+                height: 120
+                color: "transparent"
+
+                Row {
+                    anchors.fill: parent
+                    anchors.margins: 10
+                    spacing: 15
+
+                    Image {
+                        width: 100
+                        height: 100
+                        source: modelData.image
+                        fillMode: Image.PreserveAspectFit
+                    }
+
+                    Column {
+                        width: parent.width - 130
+                        height: parent.height
+                        spacing: 5
+
+                        Text {
+                            text: modelData.name
+                            color: "white"
+                            font.pixelSize: 24
+                            font.bold: true
+                            font.family: "Times New Roman"
+                        }
+
+                        Text {
+                            text: "₱" + modelData.price.toFixed(2)
+                            color: "#ffeb3b"
+                            font.pixelSize: 20
+                            font.family: "Times New Roman"
+                        }
+
+                        Rectangle {
+                            width: 120
+                            height: 35
+                            color: "#4caf50"
+                            radius: 5
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Add to Order"
+                                color: "white"
+                                font.pixelSize: 16
+                                font.family: "Times New Roman"
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    orderManager.addToOrder(modelData.id)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     Rectangle {
         height: 100
         color: "#282e17"
@@ -93,7 +182,7 @@ Window {
             color: "transparent"
             Text {
                 anchors.centerIn: parent
-                text: "Total PHP: "
+                text: "Total PHP: " + orderTotal.toFixed(2)
                 color: "white"
                 font.pixelSize: 32
                 font.family: "Times New Roman"
@@ -125,6 +214,7 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    orderManager.clearOrder()
                     stack.pop()
                 }
             }   
