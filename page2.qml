@@ -69,7 +69,6 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    backend.click_payment("CASH")
                     stack.push("qrc:/finish.qml")
                 }
             }
@@ -111,7 +110,6 @@ Window {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    backend.click_payment("CASHLESS")
                     stack.push("qrc:/finish.qml")
                 }
             }

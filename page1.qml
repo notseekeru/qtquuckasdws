@@ -73,7 +73,6 @@ Window {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            backend.click_order("DINE IN")
                             stack.push("qrc:/mainmenu.qml")
                         }
                     }
@@ -107,7 +106,6 @@ Window {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            backend.click_order("TAKE OUT")
                             stack.push("qrc:/mainmenu.qml")
                         }
                     }

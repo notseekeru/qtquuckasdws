@@ -68,7 +68,6 @@ Window {
                 anchors.fill: parent
                 onClicked: {
                     stack.push("qrc:/page1.qml")
-                    backend.click_order("START ORDER")
                 }
             }
         }

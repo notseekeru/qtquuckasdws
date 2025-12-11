@@ -9,8 +9,7 @@
 #include <algorithm>
 #include <optional>
 
-struct MenuItem
-{
+struct MenuItem {
     int id;
     std::string name;
     double price;
@@ -18,18 +17,19 @@ struct MenuItem
     std::string category;
 };
 
-struct OrderItem
-{
+struct OrderItem {
     std::string name;
     int quantity;
     double lineTotal;
 };
 
-class OrderManager
-{
+class OrderManager {
 public:
-    OrderManager()
-    {
+    OrderManager() {
+        initializeMenu();
+    }
+
+    void initializeMenu() {
         menu = {
             {1, "Carpaccio di Manzo", 380.00, "qrc:/assets/foods/Carpaccio di Manzo.png", "antipasti"},
             {2, "Bruschetta", 350.00, "qrc:/assets/foods/Bruschetta.png", "antipasti"},
@@ -58,13 +58,11 @@ public:
         };
     }
 
-    const std::vector<MenuItem>& getMenu() const
-    {
+    const std::vector<MenuItem>& getMenu() const {
         return menu;
     }
 
-    std::vector<MenuItem> getByCategory(const std::string& category) const
-    {
+    std::vector<MenuItem> getByCategory(const std::string& category) const {
         std::vector<MenuItem> result;
         for (const auto& item : menu) {
             if (item.category == category) {
@@ -74,8 +72,7 @@ public:
         return result;
     }
 
-    std::vector<std::string> getCategories() const
-    {
+    std::vector<std::string> getCategories() const {
         std::vector<std::string> result;
         for (const auto& item : menu) {
             bool exists = std::find(result.begin(), result.end(), item.category) != result.end();
@@ -86,18 +83,15 @@ public:
         return result;
     }
 
-    void addToOrder(int id)
-    {
+    void addToOrder(int id) {
         orders[id]++;
     }
 
-    void clearOrder()
-    {
+    void clearOrder() {
         orders.clear();
     }
 
-    std::vector<OrderItem> getOrderItems() const
-    {
+    std::vector<OrderItem> getOrderItems() const {
         std::vector<OrderItem> result;
         for (const auto& [id, qty] : orders) {
             auto item = findById(id);
@@ -108,8 +102,7 @@ public:
         return result;
     }
 
-    double getOrderTotal() const
-    {
+    double getOrderTotal() const {
         double total = 0.0;
         for (const auto& [id, qty] : orders) {
             auto item = findById(id);
@@ -124,8 +117,7 @@ private:
     std::vector<MenuItem> menu;
     std::map<int, int> orders;
 
-    std::optional<MenuItem> findById(int id) const
-    {
+    std::optional<MenuItem> findById(int id) const {
         for (const auto& item : menu) {
             if (item.id == id) {
                 return item;
@@ -135,23 +127,19 @@ private:
     }
 };
 
-class QtOrderManager : public QObject
-{
+class QtOrderManager : public QObject {
         Q_OBJECT
 
-    public:
-        Q_INVOKABLE QVariantList getMenuItems()
-        {
+    public slots:
+        QVariantList getMenuItems() {
             return toQt(core.getMenu());
         }
 
-        Q_INVOKABLE QVariantList getMenuItemsByCategory(const QString& category)
-        {
+        QVariantList getMenuItemsByCategory(const QString& category) {
             return toQt(core.getByCategory(category.toStdString()));
         }
 
-        Q_INVOKABLE QStringList getCategories()
-        {
+        QStringList getCategories() {
             QStringList result;
             for (const auto& cat : core.getCategories()) {
                 result.append(QString::fromStdString(cat));
@@ -159,20 +147,17 @@ class QtOrderManager : public QObject
             return result;
         }
 
-        Q_INVOKABLE void addToOrder(int id)
-        {
+        void addToOrder(int id) {
             core.addToOrder(id);
             emit orderChanged();
         }
 
-        Q_INVOKABLE void clearOrder()
-        {
+        void clearOrder() {
             core.clearOrder();
             emit orderChanged();
         }
 
-        Q_INVOKABLE QVariantList getOrderItems()
-        {
+        QVariantList getOrderItems() {
             QVariantList result;
             for (const auto& item : core.getOrderItems()) {
                 result.append(QVariantMap{
@@ -184,8 +169,7 @@ class QtOrderManager : public QObject
             return result;
         }
 
-        Q_INVOKABLE double getOrderTotal()
-        {
+        double getOrderTotal() {
             return core.getOrderTotal();
         }
 
@@ -195,8 +179,7 @@ class QtOrderManager : public QObject
     private:
         OrderManager core;
 
-        QVariantList toQt(const std::vector<MenuItem>& items) const
-        {
+        QVariantList toQt(const std::vector<MenuItem>& items) const {
             QVariantList result;
             for (const auto& item : items) {
                 result.append(QVariantMap{
@@ -211,45 +194,15 @@ class QtOrderManager : public QObject
         }
     };
 
-class Backend : public QObject
-{
-    Q_OBJECT
-
-    public:
-        QString customer_order_method = "N/A";
-        QString customer_payment_method = "N/A";
-        QString customer_serving_method = "N/A";
-
-    public slots:
-        void click_order(const QString &type)
-        {
-            customer_order_method = type;
-            qDebug() << "Order method:" << customer_order_method;
-        }
-        void click_payment(const QString &type)
-        {
-            customer_payment_method = type;
-            qDebug() << "Payment method:" << customer_payment_method;
-        }
-        void click_serving(const QString &type)
-        {
-            customer_serving_method = type;
-            qDebug() << "Serving method:" << customer_serving_method;
-        }
-};
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/assets/applogo.ico"));
 
     QQmlApplicationEngine engine;
 
     QtOrderManager orderManager;
-    Backend backend;
 
     engine.rootContext()->setContextProperty("orderManager", &orderManager); // Register it!
-    engine.rootContext()->setContextProperty("backend", &backend);
 
     engine.load(QUrl(QStringLiteral("qrc:/Main.qml"))); // Now load QML
 
