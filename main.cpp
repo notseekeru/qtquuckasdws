@@ -9,16 +9,18 @@
 #include <algorithm>
 #include <optional>
 
+using namespace std;
+
 struct MenuItem {
     int id;
-    std::string name;
+    string name;
     double price;
-    std::string image;
-    std::string category;
+    string image;
+    string category;
 };
 
 struct OrderItem {
-    std::string name;
+    string name;
     int quantity;
     double lineTotal;
 };
@@ -58,12 +60,12 @@ public:
         };
     }
 
-    const std::vector<MenuItem>& getMenu() const {
+    const vector<MenuItem>& getMenu() const {
         return menu;
     }
 
-    std::vector<MenuItem> getByCategory(const std::string& category) const {
-        std::vector<MenuItem> result;
+    vector<MenuItem> getByCategory(const string& category) const {
+        vector<MenuItem> result;
         for (const auto& item : menu) {
             if (item.category == category) {
                 result.push_back(item);
@@ -72,10 +74,10 @@ public:
         return result;
     }
 
-    std::vector<std::string> getCategories() const {
-        std::vector<std::string> result;
+    vector<string> getCategories() const {
+        vector<string> result;
         for (const auto& item : menu) {
-            bool exists = std::find(result.begin(), result.end(), item.category) != result.end();
+            bool exists = find(result.begin(), result.end(), item.category) != result.end();
             if (!exists) {
                 result.push_back(item.category);
             }
@@ -91,8 +93,8 @@ public:
         orders.clear();
     }
 
-    std::vector<OrderItem> getOrderItems() const {
-        std::vector<OrderItem> result;
+    vector<OrderItem> getOrderItems() const {
+        vector<OrderItem> result;
         for (const auto& [id, qty] : orders) {
             auto item = findById(id);
             if (item) {
@@ -114,16 +116,16 @@ public:
     }
 
 private:
-    std::vector<MenuItem> menu;
-    std::map<int, int> orders;
+    vector<MenuItem> menu;
+    map<int, int> orders;
 
-    std::optional<MenuItem> findById(int id) const {
+    optional<MenuItem> findById(int id) const {
         for (const auto& item : menu) {
             if (item.id == id) {
                 return item;
             }
         }
-        return std::nullopt;
+        return nullopt;
     }
 };
 
@@ -179,7 +181,7 @@ class QtOrderManager : public QObject {
     private:
         OrderManager core;
 
-        QVariantList toQt(const std::vector<MenuItem>& items) const {
+        QVariantList toQt(const vector<MenuItem>& items) const {
             QVariantList result;
             for (const auto& item : items) {
                 result.append(QVariantMap{
@@ -202,9 +204,9 @@ int main(int argc, char *argv[]) {
 
     QtOrderManager orderManager;
 
-    engine.rootContext()->setContextProperty("orderManager", &orderManager); // Register it!
+    engine.rootContext()->setContextProperty("orderManager", &orderManager);
 
-    engine.load(QUrl(QStringLiteral("qrc:/Main.qml"))); // Now load QML
+    engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
 
     return app.exec();
 }
