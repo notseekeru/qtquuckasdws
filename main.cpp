@@ -29,7 +29,6 @@ public:
     OrderManager() {
         initializeMenu();
     }
-
     void initializeMenu() {
         menu = {
             {1, "Carpaccio di Manzo", 380.00, "qrc:/assets/foods/Carpaccio di Manzo.png", "antipasti"},
@@ -55,8 +54,16 @@ public:
             {21, "Mango", 250.00, "qrc:/assets/foods/Mango.png", "fruit_shakes"},
             {22, "Banana", 250.00, "qrc:/assets/foods/Banana.png", "fruit_shakes"},
             {23, "San Pellegrino 750ml", 320.00, "qrc:/assets/foods/San Pellegrino.png", "water"},
-            {24, "Panna 750ml", 300.00, "qrc:/assets/foods/Panna.png", "water"}
+            {24, "Panna 750ml", 300.00, "qrc:/assets/foods/Panna.png", "water"},
         };
+    }
+    
+    void addToOrder(int id) {
+        orders[id]++;
+    }
+
+    void clearOrder() {
+        orders.clear();
     }
 
     vector<MenuItem> getByCategory(const string category) const {
@@ -67,14 +74,6 @@ public:
             }
         }
         return result;
-    }
-
-    void addToOrder(int id) {
-        orders[id]++;
-    }
-
-    void clearOrder() {
-        orders.clear();
     }
 
     vector<OrderItem> getOrderItems() const {
@@ -88,7 +87,7 @@ public:
         return result;
     }
 
-    double getOrderTotal() const {
+    double getOrderTotal() const { // FOR CALCULATING ORDER TOTAL
         double total = 0.0;
         for (const auto [id, qty] : orders) {
             auto item = findById(id);
@@ -119,10 +118,6 @@ class QtOrderManager : public QObject {
 
     public slots:
 
-        QVariantList getMenuItemsByCategory(const QString& category) {
-            return toQt(core.getByCategory(category.toStdString()));
-        }
-
         void addToOrder(int id) {
             core.addToOrder(id);
             emit orderChanged();
@@ -131,6 +126,10 @@ class QtOrderManager : public QObject {
         void clearOrder() {
             core.clearOrder();
             emit orderChanged();
+        }
+
+        QVariantList getMenuItemsByCategory(const QString& category) {
+            return toQt(core.getByCategory(category.toStdString()));
         }
 
         QVariantList getOrderItems() {
