@@ -66,7 +66,7 @@ public:
 
     vector<MenuItem> getByCategory(const string& category) const {
         vector<MenuItem> result;
-        for (const auto& item : menu) {
+        for (const auto item : menu) {
             if (item.category == category) {
                 result.push_back(item);
             }
@@ -76,7 +76,7 @@ public:
 
     vector<string> getCategories() const {
         vector<string> result;
-        for (const auto& item : menu) {
+        for (const auto item : menu) {
             bool exists = find(result.begin(), result.end(), item.category) != result.end();
             if (!exists) {
                 result.push_back(item.category);
@@ -95,7 +95,7 @@ public:
 
     vector<OrderItem> getOrderItems() const {
         vector<OrderItem> result;
-        for (const auto& [id, qty] : orders) {
+        for (const auto [id, qty] : orders) {
             auto item = findById(id);
             if (item) {
                 result.push_back({item->name, qty, item->price * qty});
@@ -106,7 +106,7 @@ public:
 
     double getOrderTotal() const {
         double total = 0.0;
-        for (const auto& [id, qty] : orders) {
+        for (const auto [id, qty] : orders) {
             auto item = findById(id);
             if (item) {
                 total += item->price * qty;
@@ -120,7 +120,7 @@ private:
     map<int, int> orders;
 
     optional<MenuItem> findById(int id) const {
-        for (const auto& item : menu) {
+        for (const auto item : menu) {
             if (item.id == id) {
                 return item;
             }
@@ -143,7 +143,7 @@ class QtOrderManager : public QObject {
 
         QStringList getCategories() {
             QStringList result;
-            for (const auto& cat : core.getCategories()) {
+            for (const auto cat : core.getCategories()) {
                 result.append(QString::fromStdString(cat));
             }
             return result;
@@ -161,7 +161,7 @@ class QtOrderManager : public QObject {
 
         QVariantList getOrderItems() {
             QVariantList result;
-            for (const auto& item : core.getOrderItems()) {
+            for (const auto item : core.getOrderItems()) {
                 result.append(QVariantMap{
                     {"name", QString::fromStdString(item.name)},
                     {"quantity", item.quantity},
@@ -183,7 +183,7 @@ class QtOrderManager : public QObject {
 
         QVariantList toQt(const vector<MenuItem>& items) const {
             QVariantList result;
-            for (const auto& item : items) {
+            for (const auto item : items) {
                 result.append(QVariantMap{
                     {"id", item.id},
                     {"name", QString::fromStdString(item.name)},
