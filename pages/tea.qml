@@ -96,7 +96,10 @@ Window {
             delegate: Rectangle {
                 width: 700
                 height: 120
-                color: "transparent"
+                color: "#5a5045"
+                radius: 10
+                border.width: 2
+                border.color: "#8b7355"
 
                 Row {
                     anchors.fill: parent
@@ -174,7 +177,7 @@ Window {
             bottom: parent.bottom
             bottomMargin: 80
             left: parent.left
-            leftMargin: 40
+            leftMargin: 100
         }
         Rectangle {
             width: 100

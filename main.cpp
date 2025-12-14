@@ -61,8 +61,8 @@ public:
     }
 
     vector<MenuItem> getByCategory(const string category) const {
-        vector<MenuItem> result;
-        for (const auto item : menu) {xc
+        vector<MenuItem> result; // CART
+        for (const auto& item : menu) {
             if (item.category == category) {
                 result.push_back(item);
             }
@@ -82,8 +82,8 @@ public:
         vector<OrderItem> result;
         for (const auto [id, qty] : orders) {
             auto item = findById(id);
-            if (item) {
-                result.push_back({item->name, qty, item->price * qty});
+            if (item.has_value()) {
+                result.push_back({item.value().name, qty, item.value().price * qty});
             }
         }
         return result;
@@ -93,8 +93,8 @@ public:
         double total = 0.0;
         for (const auto [id, qty] : orders) {
             auto item = findById(id);
-            if (item) {
-                total += item->price * qty;
+            if (item.has_value()) {
+                total += item.value().price * qty;
             }
         }
         return total;
@@ -105,7 +105,7 @@ private:
     map<int, int> orders;
 
     optional<MenuItem> findById(int id) const {
-        for (const auto item : menu) {
+        for (const auto& item : menu) {
             if (item.id == id) {
                 return item;
             }
@@ -136,7 +136,7 @@ class QtOrderManager : public QObject {
 
         QVariantList getOrderItems() {
             QVariantList result;
-            for (const auto item : core.getOrderItems()) {
+            for (const auto& item : core.getOrderItems()) {
                 result.append(QVariantMap{
                     {"name", QString::fromStdString(item.name)},
                     {"quantity", item.quantity},
@@ -158,7 +158,7 @@ class QtOrderManager : public QObject {
 
         QVariantList toQt(const vector<MenuItem>& items) const {
             QVariantList result;
-            for (const auto item : items) {
+            for (const auto& item : items) {
                 result.append(QVariantMap{
                     {"id", item.id},
                     {"name", QString::fromStdString(item.name)},
@@ -175,13 +175,11 @@ int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/assets/applogo.ico"));
 
-    QQmlApplicationEngine engine;
-
+    QQmlApplicationEngine qtEngine;
     QtOrderManager orderManager;
-
-    engine.rootContext()->setContextProperty("orderManager", &orderManager);
-
-    engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
+    
+    qtEngine.rootContext()->setContextProperty("orderManager", &orderManager);
+    qtEngine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
 
     return app.exec();
 }
