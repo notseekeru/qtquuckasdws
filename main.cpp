@@ -60,26 +60,11 @@ public:
         };
     }
 
-    const vector<MenuItem>& getMenu() const {
-        return menu;
-    }
-
-    vector<MenuItem> getByCategory(const string& category) const {
+    vector<MenuItem> getByCategory(const string category) const {
         vector<MenuItem> result;
-        for (const auto item : menu) {
+        for (const auto item : menu) {xc
             if (item.category == category) {
                 result.push_back(item);
-            }
-        }
-        return result;
-    }
-
-    vector<string> getCategories() const {
-        vector<string> result;
-        for (const auto item : menu) {
-            bool exists = find(result.begin(), result.end(), item.category) != result.end();
-            if (!exists) {
-                result.push_back(item.category);
             }
         }
         return result;
@@ -129,24 +114,14 @@ private:
     }
 };
 
+//QT RELATED STUFF
 class QtOrderManager : public QObject {
         Q_OBJECT
 
     public slots:
-        QVariantList getMenuItems() {
-            return toQt(core.getMenu());
-        }
 
         QVariantList getMenuItemsByCategory(const QString& category) {
             return toQt(core.getByCategory(category.toStdString()));
-        }
-
-        QStringList getCategories() {
-            QStringList result;
-            for (const auto cat : core.getCategories()) {
-                result.append(QString::fromStdString(cat));
-            }
-            return result;
         }
 
         void addToOrder(int id) {
