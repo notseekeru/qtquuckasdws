@@ -61,7 +61,7 @@ public:
     }
 
     vector<MenuItem> getByCategory(const string category) const {
-        vector<MenuItem> result; // CART
+        vector<MenuItem> result;
         for (const auto& item : menu) {
             if (item.category == category) {
                 result.push_back(item);
@@ -79,7 +79,7 @@ public:
     }
 
     vector<OrderItem> getOrderItems() const {
-        vector<OrderItem> result;
+    vector<OrderItem> result;  // ACTS AS A CART YUNG RESULT
         for (const auto [id, qty] : orders) {
             auto item = findById(id);
             if (item.has_value()) {
